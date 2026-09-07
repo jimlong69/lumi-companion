@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171714">
+  <meta name="description" content="Lumi is a calm, text-first companion for the moment you are in.">
+  <title>Lumi · a little company</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero" aria-label="Lumi companion">
+      <img class="hero-image" src="./assets/lumi-portrait.png" alt="Lumi, a friendly companion" width="768" height="1024">
+      <div class="hero-wash" aria-hidden="true"></div>
+      <div class="hero-topbar">
+        <button class="round-button" id="privacyButton" type="button" aria-label="About privacy" title="About privacy">i</button>
+        <label class="camera-switch">
+          <span class="switch-copy" id="cameraLabel">Camera off</span>
+          <input id="cameraToggle" type="checkbox" aria-label="Turn on optional camera">
+          <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+        </label>
+      </div>
+      <div class="hero-bottom">
+        <div class="presence"><span class="presence-dot" aria-hidden="true"></span>Here with you</div>
+        <p>Text only · camera is always your choice</p>
+      </div>
+      <div class="camera-view" id="cameraView" hidden>
+        <video id="cameraVideo" autoplay muted playsinline></video>
+        <div class="camera-overlay" aria-hidden="true"></div>
+        <div class="camera-status"><span class="live-dot"></span><span>Private view</span><span class="status-separator">·</span><span id="countdown">Next check-in 1:00</span></div>
+      </div>
+      <div class="camera-fallback" id="cameraFallback" hidden>
+        <strong>Live camera isn’t available here.</strong>
+        <span>Nothing was recorded. You can still share a single photo for a private check-in.</span>
+        <label class="photo-button">Choose a photo<input id="photoInput" type="file" accept="image/*" capture="user"></label>
+      </div>
+    </section>
+
+    <section class="chat" id="chat" aria-live="polite" aria-label="Conversation">
+      <article class="message companion-message">
+        <img class="avatar" src="./assets/lumi-portrait.png" alt="">
+        <div class="bubble-wrap">
+          <div class="message-meta">Lumi <span>· now</span></div>
+          <p class="bubble">Hi, I’m Lumi. You can bring me the unedited version of what’s on your mind. How is this moment treating you?</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="composer-area">
+      <div class="typing-indicator" id="typingIndicator" hidden><span></span><span></span><span></span><em>Lumi is thinking</em></div>
+      <form class="composer" id="composer">
+        <label class="message-input">
+          <textarea id="messageInput" rows="1" maxlength="1200" placeholder="Tell Lumi what’s on your mind…" aria-label="Message Lumi"></textarea>
+        </label>
+        <button class="send-button" id="sendButton" type="submit" aria-label="Send message">↗</button>
+      </form>
+      <p class="composer-note">Your messages are sent securely to Lumi’s server to generate a reply.</p>
+    </div>
+  </main>
+
+  <dialog class="privacy-dialog" id="privacyDialog">
+    <div class="dialog-card">
+      <div class="dialog-mark" aria-hidden="true">◉</div>
+      <h2>You’re in control</h2>
+      <p>Lumi is text-first. The camera is optional and starts only after you switch it on. When enabled, a small JPEG is analyzed in memory every 60 seconds for a brief, cautious observation.</p>
+      <ul>
+        <li>No audio is requested or sent.</li>
+        <li>Frames are not saved or stored by this app.</li>
+        <li>Switch the camera off to stop tracks immediately.</li>
+      </ul>
+      <button class="primary-button" id="closePrivacy" type="button">Got it</button>
+    </div>
+  </dialog>
+  <script src="./script.js" defer></script>
+</body>
+</html>
